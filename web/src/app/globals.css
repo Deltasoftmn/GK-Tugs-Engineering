@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --navy: #003366;
+  --navy-deep: #021a33;
+  --sky: #0ea5e9;
+  --sky-soft: #e0f2fe;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+  --color-brand-navy: var(--navy);
+  --color-brand-navy-deep: var(--navy-deep);
+  --color-brand-sky: var(--sky);
+  --color-brand-sky-soft: var(--sky-soft);
+}
+
+body {
+  background: radial-gradient(circle at 15% 0%, rgba(14, 165, 233, 0.25), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(14, 165, 233, 0.18), transparent 45%),
+    linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
