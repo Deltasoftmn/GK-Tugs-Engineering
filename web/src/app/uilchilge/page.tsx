@@ -145,7 +145,7 @@ function NodeCard({
   return (
     <article
       id={id}
-      className="relative max-w-[380px] overflow-hidden rounded-2xl bg-white/92 p-5 shadow-[0_18px_40px_-26px_rgba(2,26,51,0.55)] ring-1 ring-slate-200/80"
+      className="relative mx-auto max-w-[380px] overflow-hidden rounded-2xl bg-white/92 p-5 shadow-[0_18px_40px_-26px_rgba(2,26,51,0.55)] ring-1 ring-slate-200/80 md:mx-0"
     >
       <div className="flex gap-4">
         <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#f2fbff] text-brand-navy ring-1 ring-slate-200/80">
@@ -172,7 +172,7 @@ function MiniCard({
   return (
     <article
       id={id}
-      className="ml-auto max-w-[420px] rounded-2xl bg-white/92 p-5 shadow-[0_18px_40px_-26px_rgba(2,26,51,0.55)] ring-1 ring-slate-200/80"
+      className="mx-auto max-w-[420px] rounded-2xl bg-white/92 p-5 shadow-[0_18px_40px_-26px_rgba(2,26,51,0.55)] ring-1 ring-slate-200/80 md:ml-auto md:mr-0"
     >
       <h3 className="text-sm font-extrabold text-brand-navy">{title}</h3>
       <p className="mt-1 text-xs font-semibold leading-relaxed text-slate-600">{description}</p>
