@@ -113,7 +113,13 @@ export function Header() {
 
         {/* Right: Contact info & Language Switch */}
         <div className="hidden md:flex items-center gap-6">
-         
+          {/* <a
+            href="tel:+97670001211"
+            className="flex items-center gap-2 text-xs md:text-sm font-bold text-slate-700 hover:text-brand-sky transition-colors"
+          >
+            <IconPhone className="h-4 w-4 text-brand-sky" />
+            <span dir="ltr">+976 7000 1211</span>
+          </a> */}
           <div className="flex items-center gap-2 border-l border-slate-200 pl-6 text-xs font-bold">
             <button
               onClick={() => setLanguage("mn")}

@@ -27,13 +27,13 @@ export function Footer() {
           {/* Column 1: Branding */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
-              <span className="relative block h-10 w-[140px]">
+              <span className="relative block h-16 w-[200px]">
                 <Image
                   src="/logo.png"
                   alt="GK TUGS ENGINEERING LLC"
                   fill
                   className="object-contain object-left brightness-0 invert"
-                  sizes="140px"
+                  sizes="200px" 
                 />
               </span>
             </Link>
@@ -151,14 +151,14 @@ export function Footer() {
           <div>
             © {new Date().getFullYear()} GK TUGS ENGINEERING LLC. {t("footer.rights", "ALL RIGHTS RESERVED.", "БҮХ ЭРХ ХУУЛИАР ХАМГААЛАГДАСАН.")}
           </div>
-          <div className="flex items-center gap-6">
+          {/* <div className="flex items-center gap-6">
             <Link href="/privacy" className="hover:text-white transition-colors duration-300 uppercase">
               {t("footer.privacy", "PRIVACY POLICY", "НУУЦЛАЛЫН БОДЛОГО")}
             </Link>
             <Link href="/terms" className="hover:text-white transition-colors duration-300 uppercase">
               {t("footer.terms", "TERMS OF SERVICE", "ҮЙЛЧИЛГЭЭНИЙ НӨХЦӨЛ")}
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
