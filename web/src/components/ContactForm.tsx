@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 type FormState = {
   lastName: string;
@@ -11,11 +12,11 @@ type FormState = {
   message: string;
 };
 
-function FieldLabel({ children }: { children: string }) {
+function FieldLabel({ children, required = true }: { children: string; required?: boolean }) {
   return (
     <div className="text-xs font-extrabold text-brand-navy">
       {children}
-      <span className="text-red-500">*</span>
+      {required && <span className="text-red-500">*</span>}
     </div>
   );
 }
@@ -29,6 +30,7 @@ function InputShell({ children }: { children: React.ReactNode }) {
 }
 
 export function ContactForm() {
+  const { t, language } = useLanguage();
   const [form, setForm] = useState<FormState>({
     lastName: "",
     firstName: "",
@@ -42,16 +44,16 @@ export function ContactForm() {
     const to = "gk.tugsengineering@gmail.com";
     const subject = form.subject?.trim() || "Website contact";
     const lines = [
-      `Овог: ${form.lastName}`,
-      `Нэр: ${form.firstName}`,
-      `И-мэйл: ${form.email}`,
-      `Утас: ${form.phone}`,
+      language === "en" ? `Last Name: ${form.lastName}` : `Овог: ${form.lastName}`,
+      language === "en" ? `First Name: ${form.firstName}` : `Нэр: ${form.firstName}`,
+      language === "en" ? `Email: ${form.email}` : `И-мэйл: ${form.email}`,
+      language === "en" ? `Phone: ${form.phone}` : `Утас: ${form.phone}`,
       "",
       form.message,
     ];
     const body = lines.join("\n").trim();
     return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, [form]);
+  }, [form, language]);
 
   return (
     <form
@@ -63,7 +65,7 @@ export function ContactForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
-          <FieldLabel>Овог</FieldLabel>
+          <FieldLabel>{t("contact.form.lastname", "Last Name", "Овог")}</FieldLabel>
           <InputShell>
             <input
               required
@@ -76,7 +78,7 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <FieldLabel>Нэр</FieldLabel>
+          <FieldLabel>{t("contact.form.firstname", "First Name", "Нэр")}</FieldLabel>
           <InputShell>
             <input
               required
@@ -89,7 +91,7 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <FieldLabel>И-мэйл хаяг</FieldLabel>
+          <FieldLabel>{t("contact.form.email", "Email Address", "И-мэйл хаяг")}</FieldLabel>
           <InputShell>
             <input
               required
@@ -103,7 +105,7 @@ export function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <FieldLabel>Утас</FieldLabel>
+          <FieldLabel>{t("contact.form.phone", "Phone", "Утас")}</FieldLabel>
           <InputShell>
             <input
               required
@@ -118,7 +120,7 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <FieldLabel>Хүсэлт</FieldLabel>
+        <FieldLabel>{t("contact.form.subject", "Subject", "Хүсэлт")}</FieldLabel>
         <InputShell>
           <input
             required
@@ -131,7 +133,7 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <div className="text-xs font-extrabold text-brand-navy">Агуулга</div>
+        <FieldLabel required={false}>{t("contact.form.message", "Message", "Агуулга")}</FieldLabel>
         <InputShell>
           <textarea
             value={form.message}
@@ -148,10 +150,9 @@ export function ContactForm() {
           type="submit"
           className="rounded bg-brand-sky px-8 py-2.5 text-sm font-extrabold text-white shadow-[0_14px_26px_-18px_rgba(2,26,51,0.75)] transition hover:brightness-110"
         >
-          Илгээх
+          {t("contact.form.submit", "SEND MESSAGE", "Илгээх")}
         </button>
       </div>
     </form>
   );
 }
-

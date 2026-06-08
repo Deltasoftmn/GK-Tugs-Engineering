@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ContactForm } from "@/components/ContactForm";
 import { IconMail, IconMapPin, IconPhone } from "@/components/icons";
-
-export const metadata: Metadata = {
-  title: "Холбоо барих — GK Tugs Engineering LLC",
-  description: "Бидэнтэй холбогдох: утас, и-мэйл, хаяг болон хүсэлт илгээх маягт.",
-};
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Header />
@@ -41,7 +40,7 @@ export default function ContactPage() {
 
                 <div className="lg:flex lg:flex-col lg:self-stretch">
                   <h1 className="text-lg font-extrabold tracking-tight text-brand-navy sm:text-xl">
-                    БИДЭНТЭЙ ХОЛБОГДОХ
+                    {t("contact.title", "CONTACT US", "БИДЭНТЭЙ ХОЛБОГДОХ")}
                   </h1>
                   <div className="mt-6 lg:flex-1">
                     <ContactForm />
@@ -97,4 +96,3 @@ export default function ContactPage() {
     </>
   );
 }
-

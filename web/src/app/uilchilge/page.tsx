@@ -1,221 +1,263 @@
-import { Footer } from "@/components/Footer";
+"use client";
+
+import Image from "next/image";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { IconHardHatPipes, IconRenewable, IconSupply } from "@/components/icons";
+import { useLanguage } from "@/context/LanguageContext";
 
-export const metadata = {
-  title: "Үйлчилгээ — GK Tugs Engineering LLC",
-  description: "Үйл ажиллагааны чиглэл, үндсэн болон шинэ бизнесийн чиглэлүүд.",
-};
-
-export default function UilchilgePage() {
+function IconDownload() {
   return (
-    <>
-      <Header />
-      <main className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-slate-50 py-10 sm:py-12">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-2xl bg-white shadow-[0_22px_60px_-24px_rgba(2,26,51,0.25)] ring-1 ring-slate-200/80">
-            <div className="border-b border-slate-200/70 px-6 py-6 text-center sm:px-10 sm:py-8">
-              <h1 className="text-xl font-extrabold tracking-tight text-brand-navy sm:text-2xl md:text-[1.7rem]">
-                Үйл ажиллагааны чиглэл
-              </h1>
-              <p className="mx-auto mt-3 max-w-3xl text-sm font-semibold leading-relaxed text-slate-600 sm:text-base">
-                Инженерийн шугам сүлжээ, сэргээгдэх эрчим хүч, худалдаа нийлүүлэлтийн шийдлүүдийг
-                иж бүрэн хэрэгжүүлнэ.
-              </p>
-            </div>
-
-            <section className="p-4 sm:p-6 lg:p-8">
-              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-sky-50 via-white to-slate-50 ring-1 ring-slate-200/80">
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-70"
-                  aria-hidden
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle at 15% 20%, rgba(14,165,233,0.18), transparent 44%), radial-gradient(circle at 90% 35%, rgba(0,51,102,0.10), transparent 52%), radial-gradient(circle at 50% 80%, rgba(14,165,233,0.10), transparent 55%)",
-                  }}
-                />
-
-                <div className="relative px-4 py-10 sm:px-8 lg:px-10 lg:py-14">
-                  <div className="grid gap-10 md:grid-cols-[1fr_240px_1fr] md:grid-rows-[auto_1fr] md:gap-x-10 md:gap-y-6 lg:gap-x-12">
-                    <div className="md:col-start-1 md:row-start-1">
-                      <div className="flex items-center gap-3">
-                        <h2 className="text-base font-extrabold italic text-brand-navy sm:text-lg">
-                          Core business
-                        </h2>
-                        <span className="h-px flex-1 bg-slate-200" aria-hidden />
-                      </div>
-                    </div>
-
-                    <div className="hidden md:block md:col-start-2 md:row-span-2">
-                      <div className="relative h-full">
-                        <div className="flex h-full items-center justify-center">
-                          <Hub />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="md:col-start-3 md:row-start-1">
-                      <div className="flex items-center gap-3">
-                        <h2 className="text-base font-extrabold italic text-brand-navy sm:text-lg">
-                          New Business Areas
-                        </h2>
-                        <span className="h-px flex-1 bg-slate-200" aria-hidden />
-                      </div>
-                    </div>
-
-                    <div className="space-y-6 md:col-start-1 md:row-start-2">
-                      <NodeCard
-                        id="core-1"
-                        icon={<IconHardHatPipes className="h-8 w-8" aria-hidden />}
-                        title="Инженерийн шугам сүлжээний угсралт"
-                        description="Дулаан, ус хангамж, ариутгах татуурга, холбоо дохиоллын угсралт, туршилт тохируулга."
-                      />
-                      <NodeCard
-                        id="core-2"
-                        icon={<IconRenewable className="h-8 w-8" aria-hidden />}
-                        title="Сэргээгдэх эрчим хүчний шийдэл"
-                        description="Нар, салхины эх үүсвэрийн судалгаа, зураг төсөл, угсралт, ашиглалтад оруулах."
-                      />
-                      <NodeCard
-                        id="core-3"
-                        icon={<IconSupply className="h-8 w-8" aria-hidden />}
-                        title="Худалдаа нийлүүлэлт"
-                        description="Тоног төхөөрөмж, сэлбэг хэрэгсэл, материал нийлүүлэлт болон логистикийн зохион байгуулалт."
-                      />
-                    </div>
-
-                    <div className="space-y-6 md:col-start-3 md:row-start-2">
-                      <MiniCard
-                        id="new-1"
-                        title="Дулааны болон хүйтний тооцоо, мониторинг"
-                        description="Операторын хяналт, мэдрэгч, өгөгдөл цуглуулах, тайлангийн шийдэл."
-                      />
-                      <MiniCard
-                        id="new-2"
-                        title="Төслийн ба үйлдвэрийн барилга байгууламжийн угсралт"
-                        description="Инженерийн уялдаа холбоотой, шат дараалсан барилга угсралтын ажил."
-                      />
-                      <MiniCard
-                        id="new-3"
-                        title="Сэргээгдэх эрчим хүчний барилга байгууламжийн зөвлөх үйлчилгээ"
-                        description="ТЭЗҮ, зураг төсөл, техникийн шаардлага, хяналт, зөвлөх."
-                      />
-                      <MiniCard
-                        id="new-4"
-                        title="Дулаан хангамжийн систем болон сэргээгдэх эрчим хүчний төсөл, судалгаа"
-                        description="Судалгаа, эдийн засгийн үнэлгээ, хэрэгжилтийн төлөвлөлт."
-                      />
-                    </div>
-
-                    <div className="relative md:hidden">
-                      <div className="mx-auto mt-4 max-w-md">
-                        <div className="flex items-center justify-center gap-3 text-xs font-bold tracking-[0.25em] text-slate-500">
-                          <span className="h-px w-10 bg-slate-200" aria-hidden />
-                          HUB
-                          <span className="h-px w-10 bg-slate-200" aria-hidden />
-                        </div>
-                        <div className="mt-4 flex justify-center">
-                          <Hub compact />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+    <svg
+      className="mr-2 h-4 w-4 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+    </svg>
   );
 }
 
-function NodeCard({
-  icon,
-  title,
-  description,
-  id,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  id?: string;
-}) {
+function NewBusinessCard({ index, title, description }: { index: number; title: string; description: string }) {
   return (
-    <article
-      id={id}
-      className="relative mx-auto max-w-[380px] overflow-hidden rounded-2xl bg-white/92 p-5 shadow-[0_18px_40px_-26px_rgba(2,26,51,0.55)] ring-1 ring-slate-200/80 md:mx-0"
-    >
-      <div className="flex gap-4">
-        <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#f2fbff] text-brand-navy ring-1 ring-slate-200/80">
-          {icon}
-        </div>
-        <div className="min-w-0">
-          <h3 className="text-sm font-extrabold text-brand-navy">{title}</h3>
-          <p className="mt-1 text-xs font-semibold leading-relaxed text-slate-600">{description}</p>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function MiniCard({
-  title,
-  description,
-  id,
-}: {
-  title: string;
-  description: string;
-  id?: string;
-}) {
-  return (
-    <article
-      id={id}
-      className="mx-auto max-w-[420px] rounded-2xl bg-white/92 p-5 shadow-[0_18px_40px_-26px_rgba(2,26,51,0.55)] ring-1 ring-slate-200/80 md:ml-auto md:mr-0"
-    >
-      <h3 className="text-sm font-extrabold text-brand-navy">{title}</h3>
-      <p className="mt-1 text-xs font-semibold leading-relaxed text-slate-600">{description}</p>
-    </article>
-  );
-}
-
-function Hub({ compact }: { compact?: boolean }) {
-  return (
-    <div
-      className={[
-        "relative mx-auto grid place-items-center rounded-full bg-white shadow-[0_26px_80px_-50px_rgba(2,26,51,0.9)] ring-1 ring-slate-200/80",
-        compact ? "h-24 w-24" : "h-[190px] w-[190px]",
-      ].join(" ")}
-    >
+    <div className="relative overflow-hidden bg-white/90 p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300">
       <div
-        className="absolute inset-0 rounded-full"
+        className="pointer-events-none absolute left-0 top-0 h-full w-1.5 bg-brand-sky"
         aria-hidden
-        style={{
-          background:
-            "radial-gradient(circle at 35% 30%, rgba(14,165,233,0.18), transparent 58%), radial-gradient(circle at 70% 65%, rgba(0,51,102,0.08), transparent 58%)",
-        }}
       />
-      <div className="relative grid place-items-center text-brand-navy">
-        <svg
-          viewBox="0 0 64 64"
-          className={compact ? "h-10 w-10" : "h-14 w-14"}
-          fill="none"
-          aria-hidden
-        >
-          <path
-            d="M28 6h8l1.5 8.2a19.7 19.7 0 0 1 4.7 2l7-4.6 5.7 5.7-4.6 7a19.7 19.7 0 0 1 2 4.7L60 28v8l-8.2 1.5a19.7 19.7 0 0 1-2 4.7l4.6 7-5.7 5.7-7-4.6a19.7 19.7 0 0 1-4.7 2L36 60h-8l-1.5-8.2a19.7 19.7 0 0 1-4.7-2l-7 4.6-5.7-5.7 4.6-7a19.7 19.7 0 0 1-2-4.7L4 36v-8l8.2-1.5a19.7 19.7 0 0 1 2-4.7l-4.6-7 5.7-5.7 7 4.6a19.7 19.7 0 0 1 4.7-2L28 6z"
-            stroke="currentColor"
-            strokeWidth="2"
-            opacity="0.85"
-          />
-        </svg>
-        <div className={compact ? "mt-1 text-[10px] font-extrabold" : "mt-2 text-xs font-extrabold"}>
-          GK TUGS
+      <div className="flex gap-4 items-start">
+        <span className="flex-shrink-0 grid place-items-center h-7 w-7 text-xs font-bold text-brand-sky bg-sky-50 border border-sky-100 rounded-none">
+          0{index}
+        </span>
+        <div>
+          <h4 className="text-xs font-bold text-brand-navy-deep uppercase tracking-wider mb-1">
+            {title}
+          </h4>
+          <p className="text-[11px] font-semibold leading-relaxed text-slate-500">
+            {description}
+          </p>
         </div>
       </div>
     </div>
   );
 }
 
+export default function UilchilgePage() {
+  const { t, language } = useLanguage();
 
+  const newBusinessAreas = [
+    {
+      titleMn: "Дулааны болон хүйтний тооцоо, мониторинг",
+      titleEn: "Thermal and Cold Calculation, Monitoring",
+      descriptionMn: "Операторын хяналт, мэдрэгч, өгөгдөл цуглуулах, тайлангийн шийдэл.",
+      descriptionEn: "Operator control, sensors, data collection, and reporting solutions.",
+    },
+    {
+      titleMn: "Төслийн ба үйлдвэрийн барилга байгууламжийн угсралт",
+      titleEn: "Project & Industrial Building Construction",
+      descriptionMn: "Инженерийн уялдаа холбоотой, шат дараалсан барилга угсралтын ажил.",
+      descriptionEn: "Coordinated, sequenced building construction and engineering work.",
+    },
+    {
+      titleMn: "Сэргээгдэх эрчим хүчний барилга байгууламжийн зөвлөх үйлчилгээ",
+      titleEn: "Renewable Energy Facility Consulting",
+      descriptionMn: "ТЭЗҮ, зураг төсөл, техникийн шаардлага, хяналт, зөвлөх.",
+      descriptionEn: "Feasibility study, design drawing, technical requirements, supervision, and consulting.",
+    },
+    {
+      titleMn: "Дулаан хангамжийн систем болон сэргээгдэх эрчим хүчний төсөл, судалгаа",
+      titleEn: "Heating & Renewable Energy Feasibility Studies",
+      descriptionMn: "Судалгаа, эдийн засгийн үнэлгээ, хэрэгжилтийн төлөвлөлт.",
+      descriptionEn: "Research, economic evaluation, and implementation planning.",
+    },
+  ];
+
+  return (
+    <>
+      <Header />
+      <main className="flex flex-1 flex-col">
+        {/* Dotted Grid Hero Section */}
+        <section
+          className="relative bg-slate-800 text-white overflow-hidden py-16 sm:py-24"
+          style={{
+            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px)",
+            backgroundSize: "24px 24px",
+          }}
+        >
+          <div className="absolute inset-0 bg-slate-900/40 z-0" />
+          <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+              
+              {/* Left Content */}
+              <div className="max-w-xl">
+                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-wider uppercase leading-tight mb-6 drop-shadow-sm">
+                  {language === "en" ? (
+                    <>
+                      Services &amp;
+                      <br />
+                      Engineering Solutions
+                    </>
+                  ) : (
+                    <>
+                      Үйлчилгээ &amp;
+                      <br />
+                      Инженерийн шийдэл
+                    </>
+                  )}
+                </h1>
+                <p className="text-xs sm:text-sm font-medium leading-relaxed text-slate-300 mb-8 max-w-lg">
+                  {t(
+                    "services.hero_desc",
+                    "We deliver comprehensive, international-standard solutions in pipeline networks, renewable energy, and equipment supply.",
+                    "Бид инженерийн шугам сүлжээ, сэргээгдэх эрчим хүч, худалдаа нийлүүлэлтийн чиглэлээр олон улсын стандартад нийцсэн шийдлүүдийг иж бүрэн гүйцэтгэдэг."
+                  )}
+                </p>
+                <div>
+                  <a
+                    href="#"
+                    className="inline-flex items-center bg-[#0c2b5c] px-6 py-3 text-xs font-bold tracking-wider text-white shadow-lg border border-slate-700/50 hover:bg-brand-sky hover:border-brand-sky transition-all duration-300 rounded-none uppercase"
+                  >
+                    <IconDownload />
+                    {t("services.download_profile", "DOWNLOAD SERVICES PROFILE", "ҮЙЛЧИЛГЭЭНИЙ ТАНИЛЦУУЛГА ТАТАХ")}
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: Rotated Masked Image */}
+              <div className="relative flex justify-center lg:justify-end">
+                {/* Decorative background shape offset */}
+                <div className="absolute inset-0 max-w-[420px] aspect-[4/3] rounded-[48px] bg-slate-700/40 rotate-[12deg] scale-95 translate-x-4 translate-y-4 pointer-events-none" />
+                
+                {/* Main masked image container */}
+                <div className="relative overflow-hidden rounded-[48px] rotate-[12deg] aspect-[4/3] w-full max-w-[420px] border-4 border-slate-700/50 shadow-2xl bg-slate-800">
+                  <div className="-rotate-[12deg] scale-125 w-full h-full relative">
+                    <Image
+                      src="/services_hero.png"
+                      alt="GK Tugs Engineering Services"
+                      fill
+                      priority
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 420px"
+                    />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Introduction Section */}
+        <section className="bg-white py-16 sm:py-20 border-b border-slate-100">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-left">
+              <span className="block text-[10px] font-bold tracking-[0.25em] text-[#a88143] uppercase mb-3">
+                {t("services.intro_label", "OPERATIONS", "ҮЙЛ АЖИЛЛАГАА")}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-extrabold tracking-wider text-brand-navy-deep uppercase mb-6">
+                {t("services.intro_title", "GK Tugs Engineering & Business Sectors", "Жи Кэй Төгс Инженеринг ба Үйл ажиллагааны чиглэл")}
+              </h2>
+              <div className="space-y-6 text-xs sm:text-sm font-semibold leading-relaxed text-slate-500">
+                <p>
+                  {t(
+                    "services.intro_desc",
+                    "Our company fully performs infrastructure and pipeline network assembly, testing and commissioning, consulting services, energy facilities, renewable energy equipment installation, and engineering-solution building constructions in the energy and construction sectors.",
+                    "Манай компани нь эрчим хүч, барилга угсралтын салбарт дэд бүтэц, инженерийн шугам сүлжээний угсралт, туршилт тохируулга, зөвлөх үйлчилгээ, мөн эрчим хүчний барилга байгууламж, сэргээгдэх эрчим хүчний тоног төхөөрөмжийн угсралт, инженерийн шийдэлтэй барилга байгууламжийн угсралтын ажлуудыг иж бүрэн гүйцэтгэж байна."
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Core Business Areas Section */}
+        <section className="bg-[#fcfdfe] py-16 sm:py-20 border-b border-slate-100">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 sm:grid-cols-3">
+              {/* Core 1 */}
+              <div className="bg-white p-8 border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col min-h-[260px]">
+                <div className="mb-6 flex h-10 w-10 items-center justify-center bg-sky-50 rounded-none border border-sky-100 text-brand-navy">
+                  <IconHardHatPipes className="h-6 w-6" />
+                </div>
+                <span className="block text-[10px] font-bold tracking-[0.2em] text-[#a88143] uppercase mb-4">
+                  {t("services.core1.title", "ENGINEERING & CONSTRUCTION", "ИНЖЕНЕРИЙН & УГСРАЛТ")}
+                </span>
+                <p className="text-xs font-semibold leading-relaxed text-slate-600">
+                  {t(
+                    "services.core1.desc",
+                    "Heating, water supply, sewage, and telecommunications assembly, testing and commissioning.",
+                    "Дулаан, ус хангамж, ариутгах татуурга, холбоо дохиоллын угсралт, туршилт тохируулга."
+                  )}
+                </p>
+              </div>
+
+              {/* Core 2 */}
+              <div className="bg-white p-8 border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col min-h-[260px]">
+                <div className="mb-6 flex h-10 w-10 items-center justify-center bg-sky-50 rounded-none border border-sky-100 text-brand-navy">
+                  <IconRenewable className="h-6 w-6" />
+                </div>
+                <span className="block text-[10px] font-bold tracking-[0.2em] text-[#a88143] uppercase mb-4">
+                  {t("services.core2.title", "RENEWABLE ENERGY", "СЭРГЭЭГДЭХ ЭРЧИМ ХҮЧ")}
+                </span>
+                <p className="text-xs font-semibold leading-relaxed text-slate-600">
+                  {t(
+                    "services.core2.desc",
+                    "Solar and wind energy resource assessment, drawings, assembly, and commissioning.",
+                    "Нар, салхины эх үүсвэрийн судалгаа, зураг төсөл, угсралт, ашиглалтад оруулах."
+                  )}
+                </p>
+              </div>
+
+              {/* Core 3 */}
+              <div className="bg-white p-8 border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col min-h-[260px]">
+                <div className="mb-6 flex h-10 w-10 items-center justify-center bg-sky-50 rounded-none border border-sky-100 text-brand-navy">
+                  <IconSupply className="h-6 w-6" />
+                </div>
+                <span className="block text-[10px] font-bold tracking-[0.2em] text-[#a88143] uppercase mb-4">
+                  {t("services.core3.title", "TRADE & SUPPLY", "ХУДАЛДАА НИЙЛҮҮЛЭЛТ")}
+                </span>
+                <p className="text-xs font-semibold leading-relaxed text-slate-600">
+                  {t(
+                    "services.core3.desc",
+                    "Equipment, spare parts, material supply, and logistics management.",
+                    "Тоног төхөөрөмж, сэлбэг хэрэгсэл, материал нийлүүлэлт болон логистикийн зохион байгуулалт."
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* New Business Areas Section */}
+        <section className="bg-[#f0f4f8] py-16 sm:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-12">
+              <span className="block text-[10px] font-bold tracking-[0.25em] text-[#a88143] uppercase mb-3">
+                {t("services.new_label", "NEW SECTORS", "ШИНЭ ЧИГЛЭЛ")}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-extrabold tracking-wider text-brand-navy-deep uppercase">
+                {t("services.new_title", "Our New Business Sectors", "Манай шинэ бизнесийн чиглэлүүд")}
+              </h2>
+            </div>
+            
+            <div className="grid gap-6 sm:grid-cols-2">
+              {newBusinessAreas.map((area, idx) => (
+                <NewBusinessCard
+                  key={idx}
+                  index={idx + 1}
+                  title={language === "en" ? area.titleEn : area.titleMn}
+                  description={language === "en" ? area.descriptionEn : area.descriptionMn}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
