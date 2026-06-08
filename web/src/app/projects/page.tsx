@@ -45,7 +45,7 @@ export default function ProjectsPage() {
               {/* Left Content */}
               <div className="max-w-xl">
                 <h1 className="text-3xl sm:text-4xl font-extrabold tracking-wider uppercase leading-tight mb-6 drop-shadow-sm">
-                  {t("projects.hero_title", "Projects &amp; Programs", "Төсөл &amp; Хөтөлбөрүүд")}
+                  {t("projects.hero_title", "Projects &amp; Programs", "Төсөл, Хөтөлбөрүүд")}
                 </h1>
                 <p className="text-xs sm:text-sm font-medium leading-relaxed text-slate-300 mb-8 max-w-lg">
                   {t(
