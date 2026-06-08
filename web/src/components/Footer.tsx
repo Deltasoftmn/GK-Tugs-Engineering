@@ -29,11 +29,11 @@ export function Footer() {
             <Link href="/" className="inline-block">
               <span className="relative block h-16 w-[200px]">
                 <Image
-                  src="/logo.png"
+                  src="/logo1.png"
                   alt="GK TUGS ENGINEERING LLC"
                   fill
                   className="object-contain object-left brightness-0 invert"
-                  sizes="200px" 
+                  sizes="200px"
                 />
               </span>
             </Link>
